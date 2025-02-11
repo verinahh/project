@@ -1,0 +1,10 @@
+body{
+    background-color: pink;
+}
+.card, .outcard {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;;
+    width: 300px;
+    text-align: center;
+}
