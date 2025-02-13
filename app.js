@@ -6,6 +6,8 @@ const bodyParser = require('body-parser')
 const app = express()
 const PORT = 3000
 
+app.use(express.static("public"))
+
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(session({
     secret: 'password',
@@ -15,6 +17,11 @@ app.use(session({
 }))
 
 app.set("view engine", "ejs")
+
+
+app.get("/", (req, res) => {
+    res.redirect("/login")
+})
 
 
 app.get("/login", (req, res) => {
@@ -35,6 +42,19 @@ app.post("/login", (req, res) => {
     res.redirect("/dashboard")
 })
 
+app.get("/dashboard", (req, res) => {
+    if (!req.session.user) {
+        return res.redirect("/") 
+    }
+
+    res.render("dashboard", { username: req.session.user })
+})
+
+app.post("/logout", (req, res) => {
+    req.session.destroy(() => {
+        res.redirect("/login")
+    })
+})
 
 app.listen(PORT, () => {
     console.log(`serveri eshte startuar ne portin ${PORT}`)
