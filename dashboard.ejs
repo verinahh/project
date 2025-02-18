@@ -4,11 +4,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard - American School of Kosova</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="dashboard.css">
 </head>
 <body>
     <div class="outcard">
-        <h3>Welcome, <%= username %>!</h3>
+        <h2>Welcome, <%= username %>!</h2>
+
+        <div class="links">
+            <ul>
+                <li><a href="#">Classes</a></li>
+                <li><a href="#">Assignments</a></li>
+                <li><a href="#">Attendance</a></li>
+                <li><a href="#">GPA</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </div>
+
         <form action="/logout" method="post">
             <button type="submit">Log out</button>
         </form>
